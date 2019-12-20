@@ -11,6 +11,6 @@ Getting a optimal knapsack is as easy as this:
       var numItems = weights.Length;
       
       var solver = new ZeroOneKnapsackSolver(weights, values);
-      var res = solver.GetSelectedItems(numItems, capacity);
+      var isInKnapsack = solver.GetSelectedItems(numItems, capacity);
       
 ```
