@@ -8,22 +8,20 @@ namespace Optimal.Knapsack
 {
 	public class ZeroOneKnapsackSolver
 	{
-		private readonly uint[] w;
+		private readonly int[] w;
 		private readonly double[] v;
-		private readonly uint capacity;
-		private Dictionary<(uint,uint), double> valueCache 
-			= new Dictionary<(uint numItems, uint capacity), double>();
+		private Dictionary<(int,int), double> valueCache 
+			= new Dictionary<(int numItems, int capacity), double>();
 
-		public ZeroOneKnapsackSolver(uint[] w, double[] v, uint capacity)
+		public ZeroOneKnapsackSolver(int[] w, double[] v)
 		{
 			this.w = w;
 			this.v = v;
-			this.capacity = capacity;
 		}
 
 		public int Objective { get; private set; }
 
-		private double bestValueFor(uint numItems, uint capacity)
+		private double bestValueFor(int numItems, int capacity)
 		{
 			if (numItems == 0 || capacity == 0)
 			{
@@ -52,7 +50,7 @@ namespace Optimal.Knapsack
 		}
 
 
-		public List<bool> GetSelectedItems(uint numItems, uint capacity)
+		public List<bool> GetSelectedItems(int numItems, int capacity)
 		{
 			var selectionList = new List<bool>();
 			var currentCapacity = capacity;
