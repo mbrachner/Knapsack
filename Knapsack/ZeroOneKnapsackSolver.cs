@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Knapsack
+namespace Optimal.Knapsack
 {
 	public class ZeroOneKnapsackSolver
 	{
@@ -23,7 +23,7 @@ namespace Knapsack
 
 		public int Objective { get; private set; }
 
-		private double value(uint numItems, uint capacity)
+		private double bestValueFor(uint numItems, uint capacity)
 		{
 			if (numItems == 0 || capacity == 0)
 			{
@@ -34,33 +34,23 @@ namespace Knapsack
 				return value;
 			else
 			{
-				var v = Solve(numItems, capacity);
+				double v;
+				if (w[numItems - 1] > capacity)
+				{
+					v = this.bestValueFor(numItems - 1, capacity);
+				}
+				else
+				{
+					v = Math.Max(
+						this.bestValueFor(numItems - 1, capacity),
+						this.bestValueFor(numItems - 1, capacity - w[numItems - 1]) + this.v[numItems - 1]
+					);
+				}
 				valueCache[(numItems, capacity)] = v;
 				return v;
 			}
 		}
 
-		public double Solve(uint numItems, uint capacity)
-		{
-			if (numItems==0 || capacity == 0)
-			{
-				return 0;
-			}
-
-			if (w[numItems-1] > capacity)
-			{
-				valueCache[(numItems, capacity)] = value(numItems - 1, capacity);
-			}
-			else
-			{
-				valueCache[(numItems, capacity)] = Math.Max(
-					value(numItems - 1, capacity),
-					value(numItems - 1, capacity - w[numItems-1]) + v[numItems-1]
-				);
-			}
-
-			return valueCache[(numItems, capacity)];
-		}
 
 		public List<bool> GetSelectedItems(uint numItems, uint capacity)
 		{
@@ -69,7 +59,7 @@ namespace Knapsack
 			for (var currentItem = numItems; currentItem > 0; currentItem--)
 			{
 				bool isSelected;
-				if (value(currentItem-1, currentCapacity)==value(currentItem, currentCapacity))
+				if (bestValueFor(currentItem-1, currentCapacity)==bestValueFor(currentItem, currentCapacity))
 				{
 					isSelected = false;
 				} else

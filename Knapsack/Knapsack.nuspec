@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Optimal.Knapsack</id>
+    <version>$version$</version>
+    <title>Knapsack Solver</title>
+    <authors>Markus Brachner</authors>
+    <owners>Markus Brachner</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/mbrachner/Knapsack</projectUrl>
+    <repository type="git" url="https://github.com/mbrachner/Knapsack" />
+    <description>A simple zero/one knapsack solver</description>
+    <copyright>Copyright 2019</copyright>
+    <tags>Optimization Knapsack OR</tags>
+    <icon>images\knapsack.png</icon>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src=".\images\knapsack.png" target="images\" />
+  </files>
+</package>
