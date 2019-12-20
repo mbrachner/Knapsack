@@ -1,4 +1,4 @@
-# Knapsack
+# Optimal.Knapsack
 
 This is a simple zero/one knapsack solver using a dynamic programming algorithm from https://en.wikipedia.org/wiki/Knapsack_problem.
 
