@@ -2,7 +2,7 @@
 
 This is a simple zero/one knapsack solver using a dynamic programming algorithm from https://en.wikipedia.org/wiki/Knapsack_problem.
 
-Getting a optimal knapsack is as easy as this:
+Getting an optimal knapsack is as easy as this:
 ```
 
       var capacity = 67;
